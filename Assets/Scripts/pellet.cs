@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class pellet : MonoBehaviour
 {
+<<<<<<< Updated upstream
+=======
+    public int SVFill;
+>>>>>>> Stashed changes
     private void OnTriggerEnter2D(Collider2D other)
     {
-        ScoreScript.scoreValue += 100;
+        ScoreScript.scoreValue += SVFill;
+        Gamecontroller.winLevel += 1;
         Destroy(gameObject);
     }
 }

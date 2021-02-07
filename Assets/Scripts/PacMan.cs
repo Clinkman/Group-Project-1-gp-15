@@ -7,13 +7,7 @@ public class PacMan : MonoBehaviour {
 	public float speed = 4.0f;
 
 	private Vector2 direction = Vector2.zero;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
-	// Update is called once per frame
 	void Update () {
 
 		CheckInput ();
@@ -63,12 +57,12 @@ public class PacMan : MonoBehaviour {
 		} else if (direction == Vector2.up) {
 
 			transform.localScale = new Vector3 (1, 1, 1);
-			transform.localRotation = Quaternion.Euler (0, 0, 90);
+			transform.localRotation = Quaternion.Euler (0, 0, 0);
 
 		} else if (direction == Vector2.down) {
 
 			transform.localScale = new Vector3 (1, 1, 1);
-			transform.localRotation = Quaternion.Euler (0, 0, 270);
+			transform.localRotation = Quaternion.Euler (0, 0, 0);
 		}
 	}
 }

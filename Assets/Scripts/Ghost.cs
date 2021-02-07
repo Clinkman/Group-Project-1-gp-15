@@ -6,58 +6,44 @@ public class Ghost : MonoBehaviour
 {
     Rigidbody2D rb;
 
-    // movement speed
+
     [SerializeField] float speed;
 
-    // possible movent directions
     Vector2[] directions = { Vector2.up, Vector2.right, Vector2.down, Vector2.left };
 
     int directionIndex = 1;
 
-    // doesn't have to be serialized
     [SerializeField] Vector2 currentDir;
 
-    // how far to look ahead
     [SerializeField] float rayDistance;
 
-    // which layers to raycast for
     [SerializeField] LayerMask rayLayer;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
-
-    // Start is called before the first frame update
     void Start()
     {
-        // start moving in a directions
         currentDir = directions[directionIndex];
     }
 
     // Update is called once per frame
     void Update()
     {
-        // raycast
         RaycastHit2D hit2D = Physics2D.Raycast(transform.position, currentDir, rayDistance, rayLayer);
         Vector3 endpoint = currentDir * rayDistance;
-        // visably debug the ray
         Debug.DrawLine(transform.position, transform.position + endpoint, Color.green);
 
-        // if walls and pacman layer are selected, will return true for either
         if (hit2D.collider != null)
         {
-            // check if wall ahead
             if (hit2D.collider.gameObject.CompareTag("wall"))
             {
                 ChangeDirection();
             }
-
-            // check if pacman ahead
             if (hit2D.collider.gameObject.CompareTag("PacMan"))
             {
-                // deal damage;
-                print("pacman ahead!");
+                Gamecontroller.lives += -1;
             }
         }
     }

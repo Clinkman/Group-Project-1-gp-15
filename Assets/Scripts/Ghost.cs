@@ -6,7 +6,6 @@ public class Ghost : MonoBehaviour
 {
     Rigidbody2D rb;
 
-
     [SerializeField] float speed;
 
     Vector2[] directions = { Vector2.up, Vector2.right, Vector2.down, Vector2.left };
@@ -26,6 +25,10 @@ public class Ghost : MonoBehaviour
     void Start()
     {
         currentDir = directions[directionIndex];
+        GameObject GC = GameObject.Find("GameController");
+        Gamecontroller gameController = GC.GetComponent<Gamecontroller>();
+        Spawn sPawn = GameObject.Find("GameController").GetComponent<Spawn>();
+        PacMan pacMan = GameObject.Find("Player").GetComponent<PacMan>();
     }
 
     // Update is called once per frame
@@ -43,6 +46,12 @@ public class Ghost : MonoBehaviour
             }
             if (hit2D.collider.gameObject.CompareTag("PacMan"))
             {
+                if(gameController.Life3 == true)
+                {
+                    sPawn.spawnPacMan();
+                    gameController.lostLife3();
+
+                }
                 Gamecontroller.lives += -1;
             }
         }

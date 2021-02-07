@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class pellet : MonoBehaviour
 {
-<<<<<<< Updated upstream
-=======
     public int SVFill;
->>>>>>> Stashed changes
     private void OnTriggerEnter2D(Collider2D other)
     {
         ScoreScript.scoreValue += SVFill;

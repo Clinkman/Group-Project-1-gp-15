@@ -13,6 +13,12 @@ public class Gamecontroller : MonoBehaviour
     public GameObject live2;
     public GameObject live3;
 
+    public bool Life1 =true;
+	public bool Life2 =true;
+	public bool Life3 =true;
+    
+    public bool Gameover = false;
+
     public static int winLevel = 0;
     public static int lives = 3;
     public Text live;
@@ -35,7 +41,6 @@ public class Gamecontroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        LifeCounter();
         Levelchg();
         live.text = "" + lives;
         wL.text = "" + winLevel;
@@ -52,32 +57,21 @@ public class Gamecontroller : MonoBehaviour
             win.SetActive(true);
         }
     }
-    void LifeCounter()
+    public void GameoverTrue()
     {
-        if(lives >= 3)
-        {
-            live1.SetActive(true);
-            live2.SetActive(true);
-            live3.SetActive(true);
-        }
-        else if(lives > 1 && lives < 3)
-        {
-            live1.SetActive(true);
-            live2.SetActive(true);
-            live3.SetActive(false);
-        }
-        else if(lives > 0 && lives < 2)
-        {
-            live1.SetActive(true);
-            live2.SetActive(false);
-            live3.SetActive(false);
-        }
-        else if(lives <= 0)
-        {
-            live1.SetActive(false);
-            live2.SetActive(false);
-            live3.SetActive(false);
-            gameover.SetActive(true);
-        }
+        Gameover = true;
+    }
+    public void lostLife3()
+    {
+        Life3 = false;
+        live3.SetActive(false);
+    }
+    public void lostLife2()
+    {
+        Life2 = false;
+    }
+    public void lostLife1()
+    {
+        Life1 = false;
     }
 }

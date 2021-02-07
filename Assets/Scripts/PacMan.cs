@@ -7,8 +7,12 @@ public class PacMan : MonoBehaviour {
 	public float speed = 4.0f;
 
 	private Vector2 direction = Vector2.zero;
+	public bool Life1 =true;
+	public bool Life2 =true;
+	public bool Life3 =true;
 	
-	void Update () {
+	void Update () 
+	{
 
 		CheckInput ();
 
@@ -17,7 +21,8 @@ public class PacMan : MonoBehaviour {
 		UpdateOrientation ();
 	}
 
-	void CheckInput () {
+	void CheckInput () 
+	{
 
 		if (Input.GetKeyDown (KeyCode.LeftArrow)) {
 
@@ -37,12 +42,14 @@ public class PacMan : MonoBehaviour {
 		}
 	}
 
-	void Move () {
+	void Move () 
+	{
 
 		transform.localPosition += (Vector3)(direction * speed) * Time.deltaTime;
 	}
 
-	void UpdateOrientation () {
+	void UpdateOrientation () 
+	{
 
 		if (direction == Vector2.left) {
 
@@ -63,6 +70,36 @@ public class PacMan : MonoBehaviour {
 
 			transform.localScale = new Vector3 (1, 1, 1);
 			transform.localRotation = Quaternion.Euler (0, 0, 0);
+		}
+
+	}
+	public void DestroySelf()
+	{
+		Destroy(gameObject);
+	}
+	void LifeTracker()
+	{
+		if(Life3==true)
+		{
+			return;
+		}
+		else
+		{
+			if(Life2==true)
+			{
+				return;
+			}
+			else
+			{
+				if(Life1==true)
+				{
+					return;
+				}
+				else
+				{
+					
+				}
+			}
 		}
 	}
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1947679496}
   - component: {fileID: 1947679497}
   m_Layer: 0
-  m_Name: pellet
+  m_Name: PowerUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 6128260281764277480}
+  - {fileID: 1639072593230761580}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -113,8 +113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 507614613bf228e49836e4a1c2114cfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SVFill: 100
---- !u!1 &1980903551340557444
+  SVFill: 200
+--- !u!1 &2667348928497416034
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,36 +122,36 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6128260281764277480}
-  - component: {fileID: 1590318517245781649}
+  - component: {fileID: 1639072593230761580}
+  - component: {fileID: 7424008218002832326}
   m_Layer: 0
-  m_Name: Gold nugget-1.png
+  m_Name: Gold Ball-1.png
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6128260281764277480
+--- !u!4 &1639072593230761580
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1980903551340557444}
+  m_GameObject: {fileID: 2667348928497416034}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.1038, y: 2.1038, z: 2.1038}
   m_Children: []
   m_Father: {fileID: 4054805603444884}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1590318517245781649
+--- !u!212 &7424008218002832326
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1980903551340557444}
+  m_GameObject: {fileID: 2667348928497416034}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -185,7 +185,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7360bb0eb528b476ca468df7cde3e0fd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b05939e30befe43fe92d6c03174b4287, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -4,33 +4,34 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
-    public GameObject Ghost;
-    public GameObject Pacman;
+    public static GameObject Ghost;
+    public static GameObject Pacman;
     public GameObject spawnG;
     public GameObject spawnP;
 
     public Transform ghostSpawn;
+    public static Transform playerSpawn;
 
     public float respTime = 1.0f;
 
 
     // Start is called before the first frame update
     void Start()
-    {
+    { 
         ghostSpawn = spawnG.GetComponent<Transform>();
+        playerSpawn = spawnP.GetComponent<Transform>();
         spawnGhost();
     }
         
     public void spawnGhost()
     {
         GameObject a = Instantiate(Ghost) as GameObject;
-
-        a.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(8.6f, 3.4f, -2f));
+        a.transform.position = new Vector3(ghostSpawn.position.x, ghostSpawn.position.y, -2f);
     }
-    public void spawnPacMan()
+    public static void spawnPacMan()
     {
         GameObject b = Instantiate(Pacman) as GameObject;
-        b.transform.position = new Vector2(ghostSpawn.position.x, ghostSpawn.position.y);
+        b.transform.position = new Vector3(playerSpawn.position.x, playerSpawn.position.y, -2);
 
     }
     // Update is called once per frame

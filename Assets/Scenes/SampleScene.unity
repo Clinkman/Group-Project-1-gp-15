@@ -533,6 +533,7 @@ MonoBehaviour:
   speed: 4
   live: 3
   Player: {fileID: 701405298}
+  timeLeft: 10
 --- !u!114 &701405300
 MonoBehaviour:
   m_ObjectHideFlags: 0

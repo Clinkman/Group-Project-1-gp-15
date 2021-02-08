@@ -7,14 +7,12 @@ public class PacMan : MonoBehaviour {
 	public float speed = 4.0f;
 
 	private Vector2 direction = Vector2.zero;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
+	public bool Life1 =true;
+	public bool Life2 =true;
+	public bool Life3 =true;
 	
-	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 
 		CheckInput ();
 
@@ -23,7 +21,8 @@ public class PacMan : MonoBehaviour {
 		UpdateOrientation ();
 	}
 
-	void CheckInput () {
+	void CheckInput () 
+	{
 
 		if (Input.GetKeyDown (KeyCode.LeftArrow)) {
 
@@ -43,12 +42,14 @@ public class PacMan : MonoBehaviour {
 		}
 	}
 
-	void Move () {
+	void Move () 
+	{
 
 		transform.localPosition += (Vector3)(direction * speed) * Time.deltaTime;
 	}
 
-	void UpdateOrientation () {
+	void UpdateOrientation () 
+	{
 
 		if (direction == Vector2.left) {
 
@@ -63,12 +64,42 @@ public class PacMan : MonoBehaviour {
 		} else if (direction == Vector2.up) {
 
 			transform.localScale = new Vector3 (1, 1, 1);
-			transform.localRotation = Quaternion.Euler (0, 0, 90);
+			transform.localRotation = Quaternion.Euler (0, 0, 0);
 
 		} else if (direction == Vector2.down) {
 
 			transform.localScale = new Vector3 (1, 1, 1);
-			transform.localRotation = Quaternion.Euler (0, 0, 270);
+			transform.localRotation = Quaternion.Euler (0, 0, 0);
+		}
+
+	}
+	public void DestroySelf()
+	{
+		Destroy(gameObject);
+	}
+	void LifeTracker()
+	{
+		if(Life3==true)
+		{
+			return;
+		}
+		else
+		{
+			if(Life2==true)
+			{
+				return;
+			}
+			else
+			{
+				if(Life1==true)
+				{
+					return;
+				}
+				else
+				{
+					
+				}
+			}
 		}
 	}
 }

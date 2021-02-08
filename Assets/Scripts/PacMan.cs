@@ -1,28 +1,76 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PacMan : MonoBehaviour {
 
 	public float speed = 4.0f;
 
 	private Vector2 direction = Vector2.zero;
-	public bool Life1 =true;
-	public bool Life2 =true;
-	public bool Life3 =true;
+
+	public float live = 3;
+
+	public GameObject Player;
+
+	public static int gold = 0;
+
+	public static int mode = 0;
+
+	public float timeLeft = 10f;
+
+	// Use this for initialization
+	void Start () {
+		
+	}
 	
-	void Update () 
-	{
+	// Update is called once per frame
+	void Update () {
 
 		CheckInput ();
 
 		Move ();
 
 		UpdateOrientation ();
+
+		if(gold >= 52)
+        {
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+		}
+
+		if(mode >= 1)
+        {
+			timeLeft -= Time.deltaTime;
+        }
+		if(timeLeft <= 0)
+        {
+			mode = 0;
+        }
 	}
 
-	void CheckInput () 
+	void OnCollisionEnter2D(Collision2D col)
 	{
+		if (col.gameObject.tag.Equals("Enemy"))
+		{
+			if (mode >= 1)
+			{
+				
+			}
+			else
+			{
+				if (live <= 1)
+				{
+					Destroy(gameObject);
+					SceneManager.LoadScene(3);
+				}
+				Player.transform.position = new Vector3(-8, 0, -1);
+				live -= 1;
+			}
+		}
+	}
+
+	void CheckInput () {
 
 		if (Input.GetKeyDown (KeyCode.LeftArrow)) {
 
@@ -42,14 +90,12 @@ public class PacMan : MonoBehaviour {
 		}
 	}
 
-	void Move () 
-	{
+	void Move () {
 
 		transform.localPosition += (Vector3)(direction * speed) * Time.deltaTime;
 	}
 
-	void UpdateOrientation () 
-	{
+	void UpdateOrientation () {
 
 		if (direction == Vector2.left) {
 
@@ -64,42 +110,12 @@ public class PacMan : MonoBehaviour {
 		} else if (direction == Vector2.up) {
 
 			transform.localScale = new Vector3 (1, 1, 1);
-			transform.localRotation = Quaternion.Euler (0, 0, 0);
+			transform.localRotation = Quaternion.Euler (0, 0, 90);
 
 		} else if (direction == Vector2.down) {
 
 			transform.localScale = new Vector3 (1, 1, 1);
-			transform.localRotation = Quaternion.Euler (0, 0, 0);
-		}
-
-	}
-	public void DestroySelf()
-	{
-		Destroy(gameObject);
-	}
-	void LifeTracker()
-	{
-		if(Life3==true)
-		{
-			return;
-		}
-		else
-		{
-			if(Life2==true)
-			{
-				return;
-			}
-			else
-			{
-				if(Life1==true)
-				{
-					return;
-				}
-				else
-				{
-					
-				}
-			}
+			transform.localRotation = Quaternion.Euler (0, 0, 270);
 		}
 	}
 }

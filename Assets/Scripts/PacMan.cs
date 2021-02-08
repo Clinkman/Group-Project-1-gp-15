@@ -10,7 +10,7 @@ public class PacMan : MonoBehaviour {
 
 	private Vector2 direction = Vector2.zero;
 
-	public float live = 3;
+	public int liveNumber = 3;
 
 	public GameObject Player;
 
@@ -20,9 +20,12 @@ public class PacMan : MonoBehaviour {
 
 	public float timeLeft = 10f;
 
+	public AudioSource Boom;
+
 	// Use this for initialization
-	void Start () {
-		
+	void Start () 
+	{
+		lives.Number = liveNumber;
 	}
 	
 	// Update is called once per frame
@@ -46,6 +49,7 @@ public class PacMan : MonoBehaviour {
 		if(timeLeft <= 0)
         {
 			mode = 0;
+			timeLeft = 10f;
         }
 	}
 
@@ -59,13 +63,16 @@ public class PacMan : MonoBehaviour {
 			}
 			else
 			{
-				if (live <= 1)
+				if (liveNumber <= 1)
 				{
+					Boom.Play();
 					Destroy(gameObject);
 					SceneManager.LoadScene(3);
 				}
+				Boom.Play();
 				Player.transform.position = new Vector3(-8, 0, -1);
-				live -= 1;
+				liveNumber -= 1;
+				lives.Number = liveNumber;
 			}
 		}
 	}

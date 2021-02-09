@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7783948322760679252}
   - component: {fileID: 7783948322760679253}
+  - component: {fileID: 737891544079711391}
   m_Layer: 8
   m_Name: pacman_2
   m_TagString: Untagged
@@ -82,6 +83,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &737891544079711391
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7783948322760679255}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b1ef7fab8387ae5429831296adc00a47, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7783948323240472848
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,3 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+  live: 3
+  Player: {fileID: 0}
+  timeLeft: 10
+  boom: {fileID: 0}

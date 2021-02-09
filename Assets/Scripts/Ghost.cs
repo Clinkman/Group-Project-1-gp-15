@@ -23,6 +23,8 @@ public class Ghost : MonoBehaviour
     // which layers to raycast for
     [SerializeField] LayerMask rayLayer;
 
+    public AudioSource boom;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -69,7 +71,8 @@ public class Ghost : MonoBehaviour
         {
             if (PacMan.mode >= 1)
             {
-                Destroy(gameObject);
+                boom.Play();
+                transform.position = new Vector3(-1.5f, -6.5f, -2);
             }
         }
     }

@@ -10,7 +10,7 @@ public class PacMan : MonoBehaviour {
 
 	private Vector2 direction = Vector2.zero;
 
-	public float live = 3;
+	public int live = 3;
 
 	public GameObject Player;
 
@@ -20,8 +20,11 @@ public class PacMan : MonoBehaviour {
 
 	public float timeLeft = 10f;
 
+	public AudioSource boom;
+
 	// Use this for initialization
 	void Start () {
+		lives.Number = live;
 		
 	}
 	
@@ -46,6 +49,7 @@ public class PacMan : MonoBehaviour {
 		if(timeLeft <= 0)
         {
 			mode = 0;
+			timeLeft = 10f;
         }
 	}
 
@@ -61,11 +65,14 @@ public class PacMan : MonoBehaviour {
 			{
 				if (live <= 1)
 				{
+					boom.Play();
 					Destroy(gameObject);
-					SceneManager.LoadScene(3);
+					SceneManager.LoadScene(4);
 				}
-				Player.transform.position = new Vector3(-8, 0, -1);
+				boom.Play();
+				Player.transform.position = new Vector3(-9, -5, -1);
 				live -= 1;
+				lives.Number = live;
 			}
 		}
 	}
@@ -99,22 +106,22 @@ public class PacMan : MonoBehaviour {
 
 		if (direction == Vector2.left) {
 
-			transform.localScale = new Vector3 (-1, 1, 1);
+			transform.localScale = new Vector3 (-2, 2, 2);
 			transform.localRotation = Quaternion.Euler (0, 0, 0);
 
 		} else if (direction == Vector2.right) {
 
-			transform.localScale = new Vector3 (1, 1, 1);
+			transform.localScale = new Vector3 (2, 2, 2);
 			transform.localRotation = Quaternion.Euler (0, 0, 0);
 
 		} else if (direction == Vector2.up) {
 
-			transform.localScale = new Vector3 (1, 1, 1);
+			transform.localScale = new Vector3 (2, 2, 2);
 			transform.localRotation = Quaternion.Euler (0, 0, 90);
 
 		} else if (direction == Vector2.down) {
 
-			transform.localScale = new Vector3 (1, 1, 1);
+			transform.localScale = new Vector3 (2, 2, 2);
 			transform.localRotation = Quaternion.Euler (0, 0, 270);
 		}
 	}
